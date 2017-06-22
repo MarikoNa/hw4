@@ -29,7 +29,6 @@ public class PageSearch {
 	} catch (IOException e){
             e.printStackTrace();
         }
-	System.out.println("page,done");
     }
     static void inputLinks() {//rink.txtの内容をrinksに保存
 	for(int j=0;j<links.length;j++) {
@@ -46,14 +45,13 @@ public class PageSearch {
 	}catch (IOException e){
             e.printStackTrace();
         }
-	System.out.println("link,done");
     }
     static void findvisitedPage() {//何かに参照されているpageをvisitedに
 	for(int i=0;i<links.length;i++) {
 	    if(links[i] != "") {
 		String[] s = links[i].split(",");
 		for(int k=0;k<s.length;k++) {
-		    int to = Integer.parseInt(s[k]);　//iが参照しているpage
+		    int to = Integer.parseInt(s[k]); //iが参照しているpage
 		    visited[to] = true;
 		}
 	    }
@@ -65,20 +63,20 @@ public class PageSearch {
 	for(int i=0;i<visited.length;i++) {
 	    if(visited[i] == false)  {
 		count++;
-		System.out.println(pages[i]);
+		//System.out.println(pages[i]);
 	    }
 	}
-	System.out.println("page="+count);//参照されていないpage数
+	System.out.println("notVistedPage="+count);//参照されていないpage数
     }
-    static void printNolinksPage() {　//参照していない且つ参照されてないpageを書き出す
+    static void printNolinksPage() { //参照していない且つ参照されてないpageを書き出す
 	System.out.println("---どこも参照していないpage---");
 	int count = 0;
 	for(int i=0;i<visited.length;i++) {
 	    if(visited[i]==false && links[i]=="") {
 		count++;
-		System.out.println(pages[i]);
+		//System.out.println(pages[i]);
 	    }
 	}
-	System.out.println("page="+count); //page数
+	System.out.println("NolinksPage="+count); //page数
     }
 }
